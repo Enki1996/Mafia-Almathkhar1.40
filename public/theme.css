@@ -1,0 +1,101 @@
+/*
+ * مافيا المذخر - Typography theme for v1.4
+ * Edit font assignments and UI sizing here, separately from gameplay/styles.css.
+ * Optional locally uploaded fonts are NOT bundled; see FONT_SETUP.md.
+ * Retro Brush is personal-use-only: obtain an appropriate licence before public deployment.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Outfit:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700;800&display=swap');
+
+@font-face{
+  font-family:'MafiaRetroBrush';
+  src:url('/fonts/retro-brush-arabic-personal-use-only.regular.otf') format('opentype');
+  font-style:normal;font-weight:400;font-display:swap;
+}
+@font-face{
+  font-family:'MafiaDigiMaryam';
+  src:url('/fonts/Digi-Maryam-Regular.ttf') format('truetype');
+  font-style:normal;font-weight:400;font-display:swap;
+}
+@font-face{
+  font-family:'MafiaLalezar';
+  src:url('/fonts/Lalezar-Regular-5.ttf') format('truetype');
+  font-style:normal;font-weight:400;font-display:swap;
+}
+
+:root{
+  --font-headline:'MafiaRetroBrush','MafiaLalezar','Lalezar','Tajawal',Tahoma,sans-serif;
+  --font-heading:'MafiaLalezar','Lalezar','Tajawal',Tahoma,sans-serif;
+  --font-body:'Tajawal',Tahoma,'Segoe UI',Arial,sans-serif;
+  --font-button:'MafiaLalezar','Lalezar','Tajawal',Tahoma,sans-serif;
+  --font-button-secondary:'MafiaDigiMaryam','Tajawal',Tahoma,sans-serif;
+  --font-latin:'Outfit','Segoe UI',Arial,sans-serif;
+}
+
+body{font-family:var(--font-body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+/* Arabic title treatment: the logo image itself is intentionally unaffected. */
+.hero h1,.page-title h1,.form-panel h2,.rules-card .rules-intro h2,.rules-heading{
+  font-family:var(--font-headline);font-weight:400;line-height:1.54;letter-spacing:0;
+}
+.hero h1{font-size:clamp(31px,6vw,55px);margin-block:17px 13px}
+.page-title h1{font-size:clamp(32px,5vw,48px)}
+.form-panel h2{font-size:clamp(26px,4vw,36px)}
+.rules-card .rules-intro h2{font-size:clamp(29px,5vw,42px);line-height:1.55}
+.rules-heading{font-size:clamp(22px,3.8vw,29px);line-height:1.5}
+
+/* Clear, weighty information hierarchy for gameplay. */
+.glass h3,.subhead,.rules-role strong,.role-team,.role-tags span,.feature,.player .name,.counter b,.status,.notice b{
+  font-family:var(--font-heading);font-weight:400;
+}
+.glass h3,.subhead{font-size:clamp(20px,2.5vw,25px);line-height:1.48}
+.rules-role strong{font-size:21px}
+.player .name{font-size:18px}
+.feature{font-size:16px;line-height:1.45}
+.role-tags span{font-size:15px;line-height:1.45}
+
+/* Primary and consequential actions: bold, immediately legible. */
+.btn.primary,.btn.gold,.btn.big,.btn.active,.room-tools button{
+  font-family:var(--font-button);font-weight:400;font-size:clamp(17px,2vw,20px);line-height:1.35;
+}
+.btn.primary.big{font-size:clamp(20px,2.7vw,25px);min-height:60px}
+.room-tools button{font-size:17px;min-height:41px}
+
+/* Secondary interaction buttons: lighter traditional Arabic styling. */
+.btn:not(.primary):not(.gold):not(.big):not(.active),.close-modal{
+  font-family:var(--font-button-secondary);font-weight:400;font-size:clamp(16px,1.9vw,19px);line-height:1.45;
+}
+.counter .btn{font-family:var(--font-latin);font-size:19px;font-weight:600}
+/* Room code and credit must stay clear in Latin characters. */
+.room-code,.invite-code,.footer-credit{font-family:var(--font-latin)}
+.chip-btn{font-family:var(--font-latin);font-size:13px}
+.footer-version{font-family:var(--font-body);font-size:inherit}
+.input{font-family:var(--font-body);font-size:16px;line-height:1.6}
+.rules-card .rules-intro p,.rules-step p,.rules-role p,p.sub,.hero p,.tiny,.muted{font-family:var(--font-body);line-height:1.95}
+.rules-number{font-family:var(--font-latin);font-weight:800}
+.label{font-family:var(--font-body);font-size:15px}
+
+/* English UI is not forced through the decorative Arabic font. */
+html[dir='ltr'] body{font-family:var(--font-latin)}
+html[dir='ltr'] .hero h1,html[dir='ltr'] .page-title h1,html[dir='ltr'] .form-panel h2,
+html[dir='ltr'] .rules-card .rules-intro h2,html[dir='ltr'] .rules-heading,html[dir='ltr'] .glass h3,
+html[dir='ltr'] .subhead,html[dir='ltr'] .rules-role strong,html[dir='ltr'] .player .name,
+html[dir='ltr'] .btn,html[dir='ltr'] .room-tools button,html[dir='ltr'] .feature,
+html[dir='ltr'] .input,html[dir='ltr'] .label,html[dir='ltr'] p,html[dir='ltr'] .tiny{
+  font-family:var(--font-latin);
+}
+html[dir='ltr'] .hero h1,html[dir='ltr'] .page-title h1,html[dir='ltr'] .form-panel h2,
+html[dir='ltr'] .rules-card .rules-intro h2{font-weight:800;line-height:1.3}
+html[dir='ltr'] .btn.primary,html[dir='ltr'] .btn.big,html[dir='ltr'] .btn.gold{font-weight:700}
+
+@media(max-width:720px){
+  .hero h1{font-size:clamp(29px,8vw,41px);line-height:1.48}
+  .page-title h1{font-size:clamp(29px,7.5vw,37px)}
+  .glass h3,.subhead{font-size:21px}
+  .rules-heading{font-size:25px}
+  .rules-card .rules-intro h2{font-size:33px}
+  .room-tools button{font-size:16px;min-height:42px;padding:7px 12px}
+  .footer-version{font-size:inherit}
+}
+@media(max-width:365px){
+  .room-tools button{font-size:15px}
+  .feature{font-size:14px}
+}
